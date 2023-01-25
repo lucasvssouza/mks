@@ -1,18 +1,60 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
+export const GlobalStyle = createGlobalStyle`
+*{
+  margin:0;
+  padding:0;
+}
+  body {
+    width:100%;
+    background: #f9f9f9;
+  }
+`;
+
+// Main //
+export const Main = styled.main`
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+
+  width: 100%;
+  height: 1024px;
+`;
+// Main //
+// Navbar //
+export const Navbar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  background: #0f52ba;
+`;
+export const Nav_Container = styled.div`
+  width: 1440px;
+  height: 101px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+// Navbar //
 // Title //
+export const Title_Container = styled.div`
+  display: flex;
+  align-items: baseline;
+  margin-left: 65px;
+`;
 export const MKS = styled.label`
-  position: absolute;
-  left: 4.51%;
-  right: 86.6%;
-  top: 2.73%;
-  bottom: 92.97%;
-
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   font-size: 40px;
   line-height: 19px;
+  /* or 48% */
 
   color: #ffffff;
 
@@ -20,12 +62,6 @@ export const MKS = styled.label`
 `;
 
 export const Sistemas = styled.label`
-  position: absolute;
-  left: 11.46%;
-  right: 74.65%;
-  top: 4.39%;
-  bottom: 91.31%;
-
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 300;
@@ -37,55 +73,25 @@ export const Sistemas = styled.label`
   mix-blend-mode: normal;
 `;
 // Title //
-// Navbar //
-export const Top_Menu = styled.nav`
-  position: absolute;
-  width: 1440px;
-  height: 101px;
-  left: 0px;
-  top: 0px;
-`;
-// Navbar //
-// Main //
-export const Main = styled.div`
-  position: absolute;
-  width: 1440px;
-  height: 1024px;
-  left: 0px;
-  top: 0px;
-
-  background: #f9f9f9;
-`;
-// Main //
 // Cart Button //
 export const Cart_Button = styled.div`
-  position: absolute;
+  display: flex;
+  align-items: center;
+
   width: 90px;
   height: 45px;
-  left: 1262px;
-  top: 29px;
+
+  margin-right: 88px;
 
   background: #ffffff;
   border-radius: 8px;
 `;
-
-export const Cart_Vector = styled.div`
-  position: absolute;
-  left: 88.68%;
-  right: 10%;
-  top: 4.2%;
-  bottom: 94.04%;
-
-  background: #000000;
+export const Cart_SVG = styled.svg`
+  width: 20px;
+  height: 18px;
+  margin: 0 16px;
 `;
-
 export const Cart_Quantity = styled.label`
-  position: absolute;
-  width: 13px;
-  height: 22px;
-  left: 1312px;
-  top: 40px;
-
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
@@ -97,47 +103,150 @@ export const Cart_Quantity = styled.label`
 // Cart Button //
 // Product //
 export const Product_Grid = styled.div`
-  position: absolute;
-  width: 938px;
-  height: 601px;
-  left: 247px;
-  top: 217px;
+  display: grid;
+  gap: 30px 22.5px;
+  grid-template-columns: repeat(4, 1fr);
+
+  margin: 144px 0px;
+
+  @media (max-width: 980px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 740px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Product_Item = styled.div`
-  position: absolute;
-  left: 17.15%;
-  right: 67.71%;
-  top: 21.19%;
-  bottom: 50.98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  width: 218px;
+  height: 285px;
+
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
+  background-color: #fff;
+  border-radius: 8px;
 `;
+export const Product_Image = styled.img`
+  height: 138px;
+  margin-top: 18px;
+`;
+export const Product_Middle_Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 
-export const Product_Image = (imgURL: string) => styled.img`
-  position: absolute;
-  left: 69.03%;
-  right: 19.03%;
-  top: 53.81%;
-  bottom: 34.65%;
+  margin: 0px 14px;
+`;
+export const Product_Middle_Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
-  background: url(imgURL);
+  margin: 0px 14px;
+`;
+export const Product_Name = styled.label`
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  height: 38px;
+  margin-right: 4px;
+  flex: 2;
+
+  color: #2c2c2c;
+`;
+export const Product_Price = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background: #373737;
+  border-radius: 5px;
+  height: 26px;
+  flex: 1;
+
+  padding: 4px 0px 4px 6.5px;
+`;
+export const Product_Price_Label = styled.label`
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 15px;
+  padding-right: 6.5px;
+
+  color: #ffffff;
+`;
+export const Product_Description = styled.label`
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 12px;
+
+  width: 192px;
+  height: 25px;
+
+  color: #2c2c2c;
+`;
+export const Product_Buy = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  width: 218px;
+  height: 32px;
+
+  background: #0f52ba;
+  border-radius: 0px 0px 8px 8px;
+`;
+export const Product_Buy_SVG = styled.svg`
+  width: 14px;
+  height: 16px;
+  cursor: pointer;
+`;
+export const Product_Buy_Label = styled.label`
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+
+  margin-left: 14px;
+  cursor: pointer;
+
+  color: #ffffff;
 `;
 // Product //
 // Footer //
 export const Footer = styled.footer`
-  position: absolute;
-  width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
   height: 34px;
-  left: 0px;
-  top: 990px;
 
   background: #eeeeee;
 `;
 export const Copyright = styled.label`
-  position: absolute;
   width: 270px;
   height: 17px;
-  left: 604px;
-  top: 998px;
 
   font-family: "Montserrat";
   font-style: normal;
