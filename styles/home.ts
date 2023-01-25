@@ -1,17 +1,22 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { fontFamily, fontColorPrimary, fontColorSecundary } from "./variables";
 
 export const GlobalStyle = createGlobalStyle`
 *{
   margin:0;
   padding:0;
+
 }
-  body {
-    width:100%;
+  body, html {
+    width: calc(100vw - (100vw - 100%));
+    height: 100%;
+    min-height: 1024px;
+
     background: #f9f9f9;
   }
 `;
 
-// Main //
+/* Main */
 export const Main = styled.main`
   display: flex;
   align-items: center;
@@ -19,75 +24,166 @@ export const Main = styled.main`
   flex-direction: column;
 
   width: 100%;
-  height: 1024px;
+  min-height: 1024px;
 `;
-// Main //
-// Navbar //
+export const Main_Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: -101px;
+
+  width: 100%;
+  min-height: 1024px;
+  max-width: 1440px;
+`;
+/* Main */
+/* Loading */
+export const Loading_Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+`;
+export const Loading_Span = styled.span`
+  font-family: ${fontFamily};
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+
+  color: rgb(0, 0, 0);
+
+  animation: text 2s ease-in-out infinite;
+
+  @keyframes text {
+    0% {
+      color: rgb(0, 0, 0);
+    }
+    25% {
+      color: rgb(75, 75, 75);
+    }
+    50% {
+      color: rgb(150, 150, 150);
+    }
+    75% {
+      color: rgb(75, 75, 75);
+    }
+    100% {
+      color: rgb(0, 0, 0);
+    }
+  }
+`;
+export const Loading_Animation = styled.div`
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+
+  animation: ring 2s linear infinite;
+
+  @keyframes ring {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: 0px 5px 5px rgb(255, 255, 0);
+    }
+    25% {
+      transform: rotate(90deg);
+      box-shadow: 0px 5px 5px rgb(0, 255, 255);
+    }
+    50% {
+      transform: rotate(180deg);
+      box-shadow: 0px 5px 5px rgb(255, 0, 255);
+    }
+    75% {
+      transform: rotate(270deg);
+      box-shadow: 0px 5px 5px rgb(0, 255, 255);
+    }
+    100% {
+      transform: rotate(360deg);
+      box-shadow: 0px 5px 5px rgb(255, 255, 0);
+    }
+  }
+
+  ::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+  }
+`;
+/* Loading */
+/* Navbar */
 export const Navbar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
+  z-index: 1;
+
   width: 100%;
 
+  height: 101px;
   background: #0f52ba;
 `;
-export const Nav_Container = styled.div`
-  width: 1440px;
-  height: 101px;
-
+export const Nav_Content = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  width: 1440px;
 `;
-// Navbar //
-// Title //
+/* Navbar */
+/* Title */
 export const Title_Container = styled.div`
   display: flex;
   align-items: baseline;
   margin-left: 65px;
 `;
 export const Title_MKS = styled.label`
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 600;
   font-size: 40px;
   line-height: 19px;
-  /* or 48% */
 
-  color: #ffffff;
-
+  color: ${fontColorPrimary};
   mix-blend-mode: normal;
 `;
 
 export const Title_Sistemas = styled.label`
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
   line-height: 19px;
 
-  color: #ffffff;
-
+  color: ${fontColorPrimary};
   mix-blend-mode: normal;
 `;
-// Title //
-// Cart Button //
+/* Title */
+/* Cart Button */
 export const Cart_Button = styled.button`
   display: flex;
   align-items: center;
 
-  cursor: pointer;
-
   width: 90px;
   height: 45px;
-
   margin-right: 88px;
 
   background: #ffffff;
   border-radius: 8px;
   border: none;
+  cursor: pointer;
 `;
 export const Cart_SVG = styled.svg`
   width: 20px;
@@ -95,18 +191,17 @@ export const Cart_SVG = styled.svg`
   margin: 0 16px;
 `;
 export const Cart_Quantity = styled.label`
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 22px;
 
+  color: ${fontColorSecundary};
   cursor: pointer;
-
-  color: #000000;
 `;
-// Cart Button //
-// Product //
+/* Cart Button */
+/* Product */
 export const Product_Grid = styled.div`
   display: grid;
   gap: 30px 22.5px;
@@ -135,7 +230,7 @@ export const Product_Item = styled.div`
   height: 285px;
 
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
-  background-color: #fff;
+  background: #ffffff;
   border-radius: 8px;
 `;
 export const Product_Image = styled.img`
@@ -155,7 +250,7 @@ export const Product_Middle_Column = styled.div`
   justify-content: space-between;
 `;
 export const Product_Name = styled.label`
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -181,17 +276,17 @@ export const Product_Price = styled.div`
   padding: 4px 0px 4px 6.5px;
 `;
 export const Product_Price_Label = styled.label`
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
   line-height: 15px;
   padding-right: 6.5px;
 
-  color: #ffffff;
+  color: ${fontColorPrimary};
 `;
 export const Product_Description = styled.label`
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 300;
   font-size: 10px;
@@ -222,7 +317,7 @@ export const Product_Buy_SVG = styled.svg`
   cursor: pointer;
 `;
 export const Product_Buy_Label = styled.label`
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -231,10 +326,10 @@ export const Product_Buy_Label = styled.label`
   margin-left: 14px;
   cursor: pointer;
 
-  color: #ffffff;
+  color: ${fontColorPrimary};
 `;
-// Product //
-// Footer //
+/* Product */
+/* Footer */
 export const Footer = styled.footer`
   display: flex;
   align-items: center;
@@ -242,6 +337,7 @@ export const Footer = styled.footer`
 
   width: 100%;
   height: 34px;
+  margin-top: -34px;
 
   background: #eeeeee;
 `;
@@ -249,12 +345,12 @@ export const Copyright = styled.label`
   width: 270px;
   height: 17px;
 
-  font-family: "Montserrat";
+  font-family: ${fontFamily};
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
 
-  color: #000000;
+  color: ${fontColorSecundary};
 `;
-// Footer //
+/* Footer */

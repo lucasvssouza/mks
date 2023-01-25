@@ -7,25 +7,31 @@ import {
   Title_MKS,
   Title_Sistemas,
   Navbar,
-  Nav_Container,
+  Nav_Content,
   Title_Container,
   Product_Grid,
   Copyright,
+  Main_Content,
 } from "@/styles/home";
 import ProductComponent from "@/components/ProductComponent";
 import { Product } from "@/types/product";
+import CartComponent from "./CartComponent";
 
-export default function MainComponent(list: { products: Array<Product> }) {
-  const { products } = list;
+export default function MainComponent(list: {
+  products: Array<Product>;
+  cartB: boolean;
+  CartButton: () => void;
+}) {
+  const { products, cartB, CartButton } = list;
   return (
     <Main>
       <Navbar>
-        <Nav_Container>
+        <Nav_Content>
           <Title_Container>
             <Title_MKS>MKS</Title_MKS>
             <Title_Sistemas>Sistemas</Title_Sistemas>
           </Title_Container>
-          <Cart_Button>
+          <Cart_Button onClick={CartButton}>
             <Cart_SVG
               viewBox="0 0 20 18"
               fill="none"
@@ -38,13 +44,16 @@ export default function MainComponent(list: { products: Array<Product> }) {
             </Cart_SVG>
             <Cart_Quantity>0</Cart_Quantity>
           </Cart_Button>
-        </Nav_Container>
+        </Nav_Content>
       </Navbar>
-      <Product_Grid>
-        {products.map((data: Product, key: number) => {
-          return <ProductComponent data={data} key={key} />;
-        })}
-      </Product_Grid>
+      <Main_Content>
+        <Product_Grid>
+          {products.map((data: Product, key: number) => {
+            return <ProductComponent data={data} key={key} />;
+          })}
+        </Product_Grid>
+        {cartB ? <CartComponent /> : <></>}
+      </Main_Content>
       <Footer>
         <Copyright>MKS sistemas © Todos os direitos reservados</Copyright>
       </Footer>
