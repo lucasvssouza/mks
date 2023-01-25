@@ -26,7 +26,7 @@ export default function ProductComponent(product: { data: Product }) {
           
           <Product_Price>
             <Product_Price_Label>R$</Product_Price_Label>
-            <Product_Price_Label>{data.price}</Product_Price_Label>
+            <Product_Price_Label>{data.price.split('.00')}</Product_Price_Label>
           </Product_Price>
         </Product_Middle_Row>
         <Product_Description>

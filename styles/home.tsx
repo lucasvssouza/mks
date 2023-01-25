@@ -48,7 +48,7 @@ export const Title_Container = styled.div`
   align-items: baseline;
   margin-left: 65px;
 `;
-export const MKS = styled.label`
+export const Title_MKS = styled.label`
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
@@ -61,7 +61,7 @@ export const MKS = styled.label`
   mix-blend-mode: normal;
 `;
 
-export const Sistemas = styled.label`
+export const Title_Sistemas = styled.label`
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 300;
@@ -74,9 +74,11 @@ export const Sistemas = styled.label`
 `;
 // Title //
 // Cart Button //
-export const Cart_Button = styled.div`
+export const Cart_Button = styled.button`
   display: flex;
   align-items: center;
+
+  cursor: pointer;
 
   width: 90px;
   height: 45px;
@@ -85,6 +87,7 @@ export const Cart_Button = styled.div`
 
   background: #ffffff;
   border-radius: 8px;
+  border: none;
 `;
 export const Cart_SVG = styled.svg`
   width: 20px;
@@ -98,6 +101,8 @@ export const Cart_Quantity = styled.label`
   font-size: 18px;
   line-height: 22px;
 
+  cursor: pointer;
+
   color: #000000;
 `;
 // Cart Button //
@@ -107,7 +112,7 @@ export const Product_Grid = styled.div`
   gap: 30px 22.5px;
   grid-template-columns: repeat(4, 1fr);
 
-  margin: 144px 0px;
+  margin: 116px 0px 172px;
 
   @media (max-width: 980px) {
     grid-template-columns: repeat(3, 1fr);
@@ -142,16 +147,12 @@ export const Product_Middle_Row = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  margin: 0px 14px;
 `;
 export const Product_Middle_Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  margin: 0px 14px;
 `;
 export const Product_Name = styled.label`
   font-family: "Montserrat";
@@ -174,7 +175,7 @@ export const Product_Price = styled.div`
 
   background: #373737;
   border-radius: 5px;
-  height: 26px;
+  height: 18px;
   flex: 1;
 
   padding: 4px 0px 4px 6.5px;

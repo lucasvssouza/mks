@@ -4,8 +4,8 @@ import {
   Cart_SVG,
   Footer,
   Main,
-  MKS,
-  Sistemas,
+  Title_MKS,
+  Title_Sistemas,
   Navbar,
   Nav_Container,
   Title_Container,
@@ -22,8 +22,8 @@ export default function MainComponent(list: { products: Array<Product> }) {
       <Navbar>
         <Nav_Container>
           <Title_Container>
-            <MKS>MKS</MKS>
-            <Sistemas>Sistemas</Sistemas>
+            <Title_MKS>MKS</Title_MKS>
+            <Title_Sistemas>Sistemas</Title_Sistemas>
           </Title_Container>
           <Cart_Button>
             <Cart_SVG
