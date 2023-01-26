@@ -1,3 +1,4 @@
+import { setLoading } from "@/features/products/loading-slicer";
 import {
   Cart_Close,
   Cart_Close_Label,
@@ -11,8 +12,15 @@ import {
   Cart_Title_Label,
   Cart_Top,
 } from "@/styles/checkout";
+import { useDispatch } from "react-redux";
 
 export default function CartComponent() {
+  const dispatch = useDispatch();
+
+  const onHandleCart = () => {
+    dispatch(setLoading());
+  };
+
   return (
     <Cart_Container>
       <Cart_Content>
@@ -21,7 +29,7 @@ export default function CartComponent() {
             <Cart_Title_Label>Carrinho</Cart_Title_Label>
             <Cart_Title_Label>de compras</Cart_Title_Label>
           </Cart_Title>
-          <Cart_Close>
+          <Cart_Close onClick={onHandleCart}>
             <Cart_Close_Label>X</Cart_Close_Label>
           </Cart_Close>
         </Cart_Top>

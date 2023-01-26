@@ -6,30 +6,28 @@ import { GlobalStyle } from "@/styles/home";
 import MainComponent from "@/components/MainComponent";
 import LoadingComponent from "@/components/LoadingComponent";
 import { Cart } from "@/types/cart";
+import { setProducts } from "@/features/products/products-slicer";
+import { useDispatch } from "react-redux";
 
 export default function Home() {
-  const [data, setData] = useState<Array<Product>>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [cartB, setBCart] = useState<boolean>(false);
   const [cart, setCart] = useState<Array<Cart>>([]);
+
+  const dispatch = useDispatch();
 
   const GetData = async () => {
     try {
       const apiResult: Array<Product> = await GetProducts();
       if (apiResult.length > 0) {
-        setData(apiResult);
+        dispatch(setProducts(apiResult));
         setLoading(false);
       }
     } catch (e) {
-      setData([]);
+      dispatch(setProducts([]));
+      console.log("Erro na API");
     }
   };
 
-  const CartButton = () => {
-    setBCart(!cartB);
-  };
-
-  console.log(typeof CartButton);
   useEffect(() => {
     GetData();
   }, [loading]);
@@ -48,11 +46,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      {loading ? (
-        <LoadingComponent />
-      ) : (
-        <MainComponent products={data} cartB={cartB} CartButton={CartButton} />
-      )}
+      {loading ? <LoadingComponent /> : <MainComponent />}
     </>
   );
 }

@@ -16,13 +16,20 @@ import {
 import ProductComponent from "@/components/ProductComponent";
 import { Product } from "@/types/product";
 import CartComponent from "./CartComponent";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/features/hooks";
+import { setLoading } from "@/features/products/loading-slicer";
 
-export default function MainComponent(list: {
-  products: Array<Product>;
-  cartB: boolean;
-  CartButton: () => void;
-}) {
-  const { products, cartB, CartButton } = list;
+export default function MainComponent() {
+  const products: Array<Product> = useAppSelector((state) => state.products);
+  const loading: boolean = useAppSelector((state) => state.loading);
+
+  const dispatch = useDispatch();
+
+  const onHandleCart = () => {
+    dispatch(setLoading());
+  };
+
   return (
     <Main>
       <Navbar>
@@ -31,7 +38,7 @@ export default function MainComponent(list: {
             <Title_MKS>MKS</Title_MKS>
             <Title_Sistemas>Sistemas</Title_Sistemas>
           </Title_Container>
-          <Cart_Button onClick={CartButton}>
+          <Cart_Button onClick={onHandleCart}>
             <Cart_SVG
               viewBox="0 0 20 18"
               fill="none"
@@ -52,7 +59,7 @@ export default function MainComponent(list: {
             return <ProductComponent data={data} key={key} />;
           })}
         </Product_Grid>
-        {cartB ? <CartComponent /> : <></>}
+        {loading ? <CartComponent /> : <></>}
       </Main_Content>
       <Footer>
         <Copyright>MKS sistemas © Todos os direitos reservados</Copyright>
@@ -60,3 +67,4 @@ export default function MainComponent(list: {
     </Main>
   );
 }
+/* */
