@@ -2,17 +2,16 @@ import Head from "next/head";
 import { GetProducts } from "@/pages/api/api";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/product";
-import { GlobalStyle } from "@/styles/home";
 import MainComponent from "@/components/MainComponent";
 import LoadingComponent from "@/components/LoadingComponent";
-import { Cart } from "@/types/cart";
+import { setLoading } from "@/features/products/loading-slicer";
 import { setProducts } from "@/features/products/products-slicer";
 import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/features/hooks";
+import { GlobalStyle } from "@/styles/global";
 
 export default function Home() {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [cart, setCart] = useState<Array<Cart>>([]);
-
+  const loading: boolean = useAppSelector((state) => state.loading);
   const dispatch = useDispatch();
 
   const GetData = async () => {
@@ -20,7 +19,7 @@ export default function Home() {
       const apiResult: Array<Product> = await GetProducts();
       if (apiResult.length > 0) {
         dispatch(setProducts(apiResult));
-        setLoading(false);
+        dispatch(setLoading(false));
       }
     } catch (e) {
       dispatch(setProducts([]));
@@ -30,7 +29,7 @@ export default function Home() {
 
   useEffect(() => {
     GetData();
-  }, [loading]);
+  }, []);
 
   return (
     <>

@@ -2,7 +2,7 @@ import {
   Loading_Animation,
   Loading_Container,
   Loading_Span,
-} from "@/styles/home";
+} from "@/styles/loading";
 
 export default function LoadingComponent() {
   return (

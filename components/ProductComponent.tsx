@@ -1,7 +1,8 @@
-import { setCart } from "@/features/products/cart-slicer";
+import { useAppSelector } from "@/features/hooks";
+import { setCart, updateCart } from "@/features/products/cart-slicer";
 import {
   Product_Buy,
-  Product_Buy_Label,
+  Product_Buy_Span,
   Product_Buy_SVG,
   Product_Image,
   Product_Item,
@@ -9,36 +10,60 @@ import {
   Product_Middle_Column,
   Product_Name,
   Product_Price,
-  Product_Price_Label,
+  Product_Price_Span,
   Product_Description,
+  Product_Column,
 } from "@/styles/home";
+import { CartItem } from "@/types/cartItem";
 import { Product } from "@/types/product";
 import { useDispatch } from "react-redux";
 
-export default function ProductComponent(product: { data: Product }) {
-  const { data } = product;
+export default function ProductComponent(product: {
+  data: Product;
+  key: number;
+}) {
+  const cart: Array<CartItem> = useAppSelector(
+    (state) => state.cart.cartProducts
+  );
   const dispatch = useDispatch();
+  const { data } = product;
 
   const onHandleProduct = () => {
-    dispatch(setCart({ quantity: 1, product: data, finalPrice: data.price }));
+    if (cart.find(({ product }) => product.id === data.id)) {
+      const old = cart.find(({ product }) => product.id === data.id);
+      const index = cart.indexOf(old!);
+
+      dispatch(
+        updateCart({
+          index: index,
+          data: data,
+          action: "+",
+        })
+      );
+    } else {
+      dispatch(setCart({ quantity: 1, product: data, finalPrice: data.price }));
+    }
   };
 
   return (
     <Product_Item>
-      <Product_Image src={data.photo} />
-      <Product_Middle_Column>
-        <Product_Middle_Row>
-          <Product_Name>
-            {data.brand} {data.name}
-          </Product_Name>
+      <Product_Column>
+        <Product_Image src={data.photo} />
 
-          <Product_Price>
-            <Product_Price_Label>R$</Product_Price_Label>
-            <Product_Price_Label>{data.price.split(".00")}</Product_Price_Label>
-          </Product_Price>
-        </Product_Middle_Row>
-        <Product_Description>{data.description}</Product_Description>
-      </Product_Middle_Column>
+        <Product_Middle_Column>
+          <Product_Middle_Row>
+            <Product_Name>
+              {data.brand} {data.name}
+            </Product_Name>
+            <Product_Price>
+              <Product_Price_Span>
+                R${data.price.split(".00")}
+              </Product_Price_Span>
+            </Product_Price>
+          </Product_Middle_Row>
+          <Product_Description>{data.description}</Product_Description>
+        </Product_Middle_Column>
+      </Product_Column>
 
       <Product_Buy onClick={onHandleProduct}>
         <Product_Buy_SVG
@@ -73,7 +98,7 @@ export default function ProductComponent(product: { data: Product }) {
             strokeLinejoin="round"
           />
         </Product_Buy_SVG>
-        <Product_Buy_Label>COMPRAR</Product_Buy_Label>
+        <Product_Buy_Span>COMPRAR</Product_Buy_Span>
       </Product_Buy>
     </Product_Item>
   );

@@ -1,21 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { fontFamily, fontColorPrimary, fontColorSecundary } from "./variables";
 
-export const GlobalStyle = createGlobalStyle`
-*{
-  margin:0;
-  padding:0;
-
-}
-  body, html {
-    width: calc(100vw - (100vw - 100%));
-    height: 100%;
-    min-height: 1024px;
-
-    background: #f9f9f9;
-  }
-`;
-
 /* Main */
 export const Main = styled.main`
   display: flex;
@@ -40,87 +25,7 @@ export const Main_Content = styled.div`
   max-width: 1440px;
 `;
 /* Main */
-/* Loading */
-export const Loading_Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  width: 100vw;
-  height: 100vh;
-`;
-export const Loading_Span = styled.span`
-  font-family: ${fontFamily};
-  font-style: normal;
-  font-weight: 700;
-  font-size: 30px;
-
-  color: rgb(0, 0, 0);
-
-  animation: text 2s ease-in-out infinite;
-
-  @keyframes text {
-    0% {
-      color: rgb(0, 0, 0);
-    }
-    25% {
-      color: rgb(75, 75, 75);
-    }
-    50% {
-      color: rgb(150, 150, 150);
-    }
-    75% {
-      color: rgb(75, 75, 75);
-    }
-    100% {
-      color: rgb(0, 0, 0);
-    }
-  }
-`;
-export const Loading_Animation = styled.div`
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-
-  animation: ring 2s linear infinite;
-
-  @keyframes ring {
-    0% {
-      transform: rotate(0deg);
-      box-shadow: 0px 5px 5px rgb(255, 255, 0);
-    }
-    25% {
-      transform: rotate(90deg);
-      box-shadow: 0px 5px 5px rgb(0, 255, 255);
-    }
-    50% {
-      transform: rotate(180deg);
-      box-shadow: 0px 5px 5px rgb(255, 0, 255);
-    }
-    75% {
-      transform: rotate(270deg);
-      box-shadow: 0px 5px 5px rgb(0, 255, 255);
-    }
-    100% {
-      transform: rotate(360deg);
-      box-shadow: 0px 5px 5px rgb(255, 255, 0);
-    }
-  }
-
-  ::before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
-  }
-`;
-/* Loading */
 /* Navbar */
 export const Navbar = styled.div`
   display: flex;
@@ -149,7 +54,7 @@ export const Title_Container = styled.div`
   align-items: baseline;
   margin-left: 65px;
 `;
-export const Title_MKS = styled.label`
+export const Title_MKS = styled.span`
   font-family: ${fontFamily};
   font-style: normal;
   font-weight: 600;
@@ -160,7 +65,7 @@ export const Title_MKS = styled.label`
   mix-blend-mode: normal;
 `;
 
-export const Title_Sistemas = styled.label`
+export const Title_Sistemas = styled.span`
   font-family: ${fontFamily};
   font-style: normal;
   font-weight: 300;
@@ -190,7 +95,7 @@ export const Cart_SVG = styled.svg`
   height: 18px;
   margin: 0 16px;
 `;
-export const Cart_Quantity = styled.label`
+export const Cart_Quantity = styled.span`
   font-family: ${fontFamily};
   font-style: normal;
   font-weight: 700;
@@ -227,14 +132,21 @@ export const Product_Item = styled.div`
   flex-direction: column;
 
   width: 218px;
-  height: 285px;
+  height: 290px;
 
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
   background: #ffffff;
   border-radius: 8px;
 `;
+export const Product_Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+`;
 export const Product_Image = styled.img`
-  height: 138px;
+  height: 124px;
+  width: 124px;
   margin-top: 18px;
 `;
 export const Product_Middle_Row = styled.div`
@@ -242,6 +154,7 @@ export const Product_Middle_Row = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin: 14px 6px 8px 7px;
 `;
 export const Product_Middle_Column = styled.div`
   display: flex;
@@ -249,7 +162,7 @@ export const Product_Middle_Column = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-export const Product_Name = styled.label`
+export const Product_Name = styled.span`
   font-family: ${fontFamily};
   font-style: normal;
   font-weight: 400;
@@ -275,7 +188,7 @@ export const Product_Price = styled.div`
 
   padding: 4px 0px 4px 6.5px;
 `;
-export const Product_Price_Label = styled.label`
+export const Product_Price_Span = styled.span`
   font-family: ${fontFamily};
   font-style: normal;
   font-weight: 700;
@@ -285,7 +198,7 @@ export const Product_Price_Label = styled.label`
 
   color: ${fontColorPrimary};
 `;
-export const Product_Description = styled.label`
+export const Product_Description = styled.span`
   font-family: ${fontFamily};
   font-style: normal;
   font-weight: 300;
@@ -316,7 +229,7 @@ export const Product_Buy_SVG = styled.svg`
   height: 16px;
   cursor: pointer;
 `;
-export const Product_Buy_Label = styled.label`
+export const Product_Buy_Span = styled.span`
   font-family: ${fontFamily};
   font-style: normal;
   font-weight: 600;
@@ -341,7 +254,7 @@ export const Footer = styled.footer`
 
   background: #eeeeee;
 `;
-export const Copyright = styled.label`
+export const Copyright = styled.span`
   width: 270px;
   height: 17px;
 
