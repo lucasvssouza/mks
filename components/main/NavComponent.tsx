@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/features/hooks";
-import { setOpen } from "@/features/products/cart-slicer";
+import { setOpen } from "@/features/cart/cart-slicer";
 import {
   Nav_Cart_Button,
   Nav_Cart_Quantity,

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Product } from "@/types/product";
 import MainComponent from "@/components/MainComponent";
 import LoadingComponent from "@/components/LoadingComponent";
-import { setLoading } from "@/features/products/loading-slicer";
+import { setLoading } from "@/features/loading/loading-slicer";
 import { setProducts } from "@/features/products/products-slicer";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/features/hooks";

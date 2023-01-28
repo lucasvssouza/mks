@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import NavComponent from "@/components/NavComponent";
+import NavComponent from "@/components/main/NavComponent";
 import { Provider } from "react-redux";
 import { store } from "@/features/store";
 import { useAppSelector } from "@/features/hooks";

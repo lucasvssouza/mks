@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/features/hooks";
-import { setCart, updateCart } from "@/features/products/cart-slicer";
+import { setCart, updateCart } from "@/features/cart/cart-slicer";
 import {
   Product_Buy_Container,
   Product_Buy_Span,

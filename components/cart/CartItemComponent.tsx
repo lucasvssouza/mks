@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/features/hooks";
-import { removeCarItem, updateCart } from "@/features/products/cart-slicer";
+import { removeCarItem, updateCart } from "@/features/cart/cart-slicer";
 import {
   Cart_Item_Container,
   Cart_Item_Image,
