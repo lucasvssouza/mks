@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { GetProducts } from "@/pages/api/api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Product } from "@/types/product";
 import MainComponent from "@/components/MainComponent";
 import LoadingComponent from "@/components/LoadingComponent";

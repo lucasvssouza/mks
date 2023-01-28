@@ -16,7 +16,7 @@ import {
 import { CartItem } from "@/types/cartItem";
 import { useDispatch } from "react-redux";
 
-export default function ProductCartComponent(product: {
+export default function CartItemComponent(product: {
   data: CartItem;
   index: number;
   key: number;

@@ -1,26 +1,29 @@
 import { useAppSelector } from "@/features/hooks";
 import { setOpen } from "@/features/products/cart-slicer";
 import {
-  Cart_Close,
+  Cart_Close_Container,
   Cart_Close_Span,
   Cart_Container,
   Cart_Content,
-  Cart_Finish,
+  Cart_Finish_Container,
   Cart_Finish_Span,
   Cart_Middle,
-  Cart_Price,
+  Cart_Price_Container,
   Cart_Price_Span,
   Cart_TC,
-  Cart_Title,
+  Cart_Title_Container,
   Cart_Title_Span,
   Cart_Top,
-} from "@/styles/checkout";
+  Cart_Bottom,
+} from "@/styles/cart/cart";
 import { CartItem } from "@/types/cartItem";
 import { useDispatch } from "react-redux";
-import ProductCartComponent from "./ProductCartComponent";
+import CartItemComponent from "./CartItemComponent";
 
 export default function CartComponent() {
-  const cart: Array<CartItem> = useAppSelector((state) => state.cart.cartProducts);
+  const cart: Array<CartItem> = useAppSelector(
+    (state) => state.cart.cartProducts
+  );
 
   const dispatch = useDispatch();
 
@@ -33,31 +36,31 @@ export default function CartComponent() {
       <Cart_Content>
         <Cart_Top>
           <Cart_TC>
-            <Cart_Title>
+            <Cart_Title_Container>
               <Cart_Title_Span>Carrinho</Cart_Title_Span>
               <Cart_Title_Span>de compras</Cart_Title_Span>
-            </Cart_Title>
-            <Cart_Close onClick={onHandleCart}>
+            </Cart_Title_Container>
+            <Cart_Close_Container onClick={onHandleCart}>
               <Cart_Close_Span>X</Cart_Close_Span>
-            </Cart_Close>
+            </Cart_Close_Container>
           </Cart_TC>
           <Cart_Middle>
             {cart.map((data: CartItem, index: number) => {
               return (
-                <ProductCartComponent data={data} key={index} index={index} />
+                <CartItemComponent data={data} key={index} index={index} />
               );
             })}
           </Cart_Middle>
         </Cart_Top>
 
-        <div>
-          <Cart_Price>
+        <Cart_Bottom>
+          <Cart_Price_Container>
             <Cart_Price_Span></Cart_Price_Span>
-          </Cart_Price>
-          <Cart_Finish>
+          </Cart_Price_Container>
+          <Cart_Finish_Container>
             <Cart_Finish_Span>Finizar Compra</Cart_Finish_Span>
-          </Cart_Finish>
-        </div>
+          </Cart_Finish_Container>
+        </Cart_Bottom>
       </Cart_Content>
     </Cart_Container>
   );

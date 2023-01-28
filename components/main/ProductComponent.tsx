@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/features/hooks";
 import { setCart, updateCart } from "@/features/products/cart-slicer";
 import {
-  Product_Buy,
+  Product_Buy_Container,
   Product_Buy_Span,
   Product_Buy_SVG,
   Product_Image,
@@ -13,7 +13,7 @@ import {
   Product_Price_Span,
   Product_Description,
   Product_Column,
-} from "@/styles/home";
+} from "@/styles/main/product";
 import { CartItem } from "@/types/cartItem";
 import { Product } from "@/types/product";
 import { useDispatch } from "react-redux";
@@ -65,7 +65,7 @@ export default function ProductComponent(product: {
         </Product_Middle_Column>
       </Product_Column>
 
-      <Product_Buy onClick={onHandleProduct}>
+      <Product_Buy_Container onClick={onHandleProduct}>
         <Product_Buy_SVG
           viewBox="0 0 14 16"
           fill="none"
@@ -99,7 +99,7 @@ export default function ProductComponent(product: {
           />
         </Product_Buy_SVG>
         <Product_Buy_Span>COMPRAR</Product_Buy_Span>
-      </Product_Buy>
+      </Product_Buy_Container>
     </Product_Item>
   );
 }

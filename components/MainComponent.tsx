@@ -1,25 +1,14 @@
 import {
-  Cart_Button,
-  Cart_Quantity,
-  Cart_SVG,
-  Footer,
   Main,
-  Title_MKS,
-  Title_Sistemas,
-  Navbar,
-  Nav_Content,
-  Title_Container,
-  Product_Grid,
-  Copyright,
   Main_Content,
+  Product_Grid
 } from "@/styles/home";
-import ProductComponent from "@/components/ProductComponent";
+import ProductComponent from "@/components/main/ProductComponent";
 import { Product } from "@/types/product";
-import CartComponent from "./CartComponent";
-import { useDispatch } from "react-redux";
+import CartComponent from "./cart/CartComponent";
 import { useAppSelector } from "@/features/hooks";
-import { setOpen } from "@/features/products/cart-slicer";
-import NavComponent from "./NavComponent";
+import NavComponent from "./main/NavComponent";
+import FooterComponent from "./main/FooterComponents";
 
 export default function MainComponent() {
   const products: Array<Product> = useAppSelector((state) => state.products);
@@ -27,7 +16,7 @@ export default function MainComponent() {
 
   return (
     <Main>
-      <NavComponent/>
+      <NavComponent />
       <Main_Content>
         <Product_Grid>
           {products.map((data: Product, index: number) => {
@@ -36,9 +25,7 @@ export default function MainComponent() {
         </Product_Grid>
         {open ? <CartComponent /> : <></>}
       </Main_Content>
-      <Footer>
-        <Copyright>MKS sistemas © Todos os direitos reservados</Copyright>
-      </Footer>
+      <FooterComponent />
     </Main>
   );
 }
