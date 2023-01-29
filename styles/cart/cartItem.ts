@@ -78,6 +78,7 @@ export const Cart_Quantity_Button = styled.button`
   line-height: 15px;
   color: ${fontColorSecundary};
 
+  background: none;
   border: none;
   cursor: pointer;
 

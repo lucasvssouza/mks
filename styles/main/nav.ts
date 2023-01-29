@@ -58,7 +58,7 @@ export const Nav_Cart_Button = styled.button`
 
   width: 90px;
   height: 45px;
-  margin-right: 88px;
+  margin: 0px 88px 0px 40px;
 
   background: #ffffff;
   border-radius: 8px;
