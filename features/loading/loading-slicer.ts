@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: boolean = true;
+const initialState: boolean = false;
 
 export const loadingSlicer = createSlice({
   name: "loading",

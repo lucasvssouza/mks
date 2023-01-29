@@ -23,10 +23,6 @@ export default function CartItemComponent(product: {
 }) {
   const { data, index } = product;
 
-  const cart: Array<CartItem> = useAppSelector(
-    (state) => state.cart.cartProducts
-  );
-
   const dispatch = useDispatch();
 
   const onHandleMinus = () => {

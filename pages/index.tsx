@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { GetProducts } from "@/pages/api/api";
 import { useEffect } from "react";
-import { Product } from "@/types/product";
 import MainComponent from "@/components/MainComponent";
 import LoadingComponent from "@/components/LoadingComponent";
 import { setLoading } from "@/features/loading/loading-slicer";
@@ -9,6 +8,7 @@ import { setProducts } from "@/features/products/products-slicer";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/features/hooks";
 import { GlobalStyle } from "@/styles/global";
+import { IApi } from "@/types/api";
 
 export default function Home() {
   const loading: boolean = useAppSelector((state) => state.loading);
@@ -16,9 +16,9 @@ export default function Home() {
 
   const GetData = async () => {
     try {
-      const apiResult: Array<Product> = await GetProducts();
-      if (apiResult.length > 0) {
-        dispatch(setProducts(apiResult));
+      const apiResult: IApi | undefined = await GetProducts();
+      if (apiResult!.data.length > 0) {
+        dispatch(setProducts(apiResult!.data));
         dispatch(setLoading(false));
       }
     } catch (e) {
