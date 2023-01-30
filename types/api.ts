@@ -1,6 +1,6 @@
-import { Product } from "./product";
+import { IProduct } from "./product";
 
 export interface IApi {
-  data: Array<Product>;
+  data: Array<IProduct>;
   status: number;
 }

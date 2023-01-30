@@ -2,7 +2,7 @@ import Head from "next/head";
 import { GetProducts } from "@/pages/api/api";
 import { useEffect } from "react";
 import MainComponent from "@/components/MainComponent";
-import LoadingComponent from "@/components/LoadingComponent";
+import SkeletonComponent from "@/components/SkeletonComponent";
 import { setLoading } from "@/features/loading/loading-slicer";
 import { setProducts } from "@/features/products/products-slicer";
 import { useDispatch } from "react-redux";
@@ -19,7 +19,9 @@ export default function Home() {
       const apiResult: IApi | undefined = await GetProducts();
       if (apiResult!.data.length > 0) {
         dispatch(setProducts(apiResult!.data));
-        dispatch(setLoading(false));
+        setTimeout(function () {
+          dispatch(setLoading(false));
+        }, 1000);
       }
     } catch (e) {
       dispatch(setProducts([]));
@@ -45,7 +47,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      {loading ? <LoadingComponent /> : <MainComponent />}
+      {loading ? <SkeletonComponent /> : <MainComponent />}
     </>
   );
 }

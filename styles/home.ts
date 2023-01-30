@@ -1,6 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-import { fontFamily, fontColorPrimary, fontColorSecundary } from "./variables";
-
+import styled from "styled-components";
 /* Main */
 export const Main = styled.main`
   display: flex;

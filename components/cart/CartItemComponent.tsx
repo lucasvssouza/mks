@@ -1,4 +1,3 @@
-import { useAppSelector } from "@/features/hooks";
 import { removeCarItem, updateCart } from "@/features/cart/cart-slicer";
 import {
   Cart_Item_Container,
@@ -13,11 +12,11 @@ import {
   Cart_Quantity_Span,
   Cart_Quantity_Button,
 } from "@/styles/cart/cartItem";
-import { CartItem } from "@/types/cartItem";
+import { ICartItem } from "@/types/cartItem";
 import { useDispatch } from "react-redux";
 
 export default function CartItemComponent(product: {
-  data: CartItem;
+  data: ICartItem;
   index: number;
   key: number;
 }) {

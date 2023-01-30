@@ -8,8 +8,8 @@ export const Product_Item = styled.div`
   align-items: center;
   flex-direction: column;
 
-  width: 218px;
   height: 290px;
+  width: 218px;
 
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
   background: #ffffff;

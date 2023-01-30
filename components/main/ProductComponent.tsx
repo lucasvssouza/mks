@@ -14,15 +14,15 @@ import {
   Product_Description,
   Product_Column,
 } from "@/styles/main/product";
-import { CartItem } from "@/types/cartItem";
-import { Product } from "@/types/product";
+import { ICartItem } from "@/types/cartItem";
+import { IProduct } from "@/types/product";
 import { useDispatch } from "react-redux";
 
 export default function ProductComponent(product: {
-  data: Product;
+  data: IProduct;
   key: number;
 }) {
-  const cart: Array<CartItem> = useAppSelector(
+  const cart: Array<ICartItem> = useAppSelector(
     (state) => state.cart.cartProducts
   );
   const dispatch = useDispatch();

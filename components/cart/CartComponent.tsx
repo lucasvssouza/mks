@@ -16,12 +16,12 @@ import {
   Cart_Top,
   Cart_Bottom,
 } from "@/styles/cart/cart";
-import { CartItem } from "@/types/cartItem";
+import { ICartItem } from "@/types/cartItem";
 import { useDispatch } from "react-redux";
 import CartItemComponent from "./CartItemComponent";
 
 export default function CartComponent() {
-  const cart: Array<CartItem> = useAppSelector(
+  const cart: Array<ICartItem> = useAppSelector(
     (state) => state.cart.cartProducts
   );
 
@@ -45,7 +45,7 @@ export default function CartComponent() {
             </Cart_Close_Container>
           </Cart_TC>
           <Cart_Middle>
-            {cart.map((data: CartItem, index: number) => {
+            {cart.map((data: ICartItem, index: number) => {
               return (
                 <CartItemComponent data={data} key={index} index={index} />
               );

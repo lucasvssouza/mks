@@ -1,4 +1,4 @@
-import { CartItem } from "@/types/cartItem";
+import { ICartItem } from "@/types/cartItem";
 import {
   ICartSlicer,
   IRemoveCartSlice,
@@ -16,7 +16,7 @@ export const cartSlicer = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setCart: (state: ICartSlicer, action: PayloadAction<CartItem>) => {
+    setCart: (state: ICartSlicer, action: PayloadAction<ICartItem>) => {
       state.cartProducts = [...state.cartProducts, action.payload];
       state.quantity++;
     },
@@ -34,7 +34,7 @@ export const cartSlicer = createSlice({
           parseFloat(oldProduct.product.price)
         ).toFixed(2);
 
-        const newProduct: CartItem = {
+        const newProduct: ICartItem = {
           quantity: newQuantity,
           product: action.payload.data,
           finalPrice: newPrice,
@@ -51,7 +51,7 @@ export const cartSlicer = createSlice({
           parseFloat(oldProduct.product.price)
         ).toFixed(2);
 
-        const newProduct: CartItem = {
+        const newProduct: ICartItem = {
           quantity: newQuantity,
           product: action.payload.data,
           finalPrice: newPrice,
