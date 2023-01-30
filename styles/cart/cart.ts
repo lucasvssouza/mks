@@ -12,7 +12,7 @@ export const Cart_Middle = styled.div`
 
   max-height: 700px;
   overflow-y: scroll;
-  margin: 0px 40px 0px 47px;
+  margin: 0px 30px 0px 47px;
 
   ::-webkit-scrollbar {
     width: 12px;
