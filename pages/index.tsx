@@ -19,7 +19,7 @@ export default function Home() {
       const apiResult: IApi | undefined = await GetProducts();
       if (apiResult!.data.length > 0) {
         dispatch(setProducts(apiResult!.data));
-        dispatch(setLoading(false));
+        
       }
     } catch (e) {
       dispatch(setProducts([]));
